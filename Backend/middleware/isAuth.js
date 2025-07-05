@@ -1,6 +1,4 @@
 const jwt = require('jsonwebtoken')
-
-
 const isAuth = async (req , res, next) =>{
     const headerObj = req.headers;
     const token = headerObj?.authorization?.split(" ")[1];
@@ -10,7 +8,6 @@ const isAuth = async (req , res, next) =>{
             return false;
         } else {
             return decoded;
-            
         }
     });
     if (verifyToken) {
@@ -21,5 +18,5 @@ const isAuth = async (req , res, next) =>{
         const err = new Error("Token Expierd, try login again")
         
     }
-
 }
+module.exports = isAuth;
